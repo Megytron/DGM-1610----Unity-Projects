@@ -12,11 +12,7 @@ public class PlayerController : MonoBehaviour
     public Transform blaster;
     public GameObject laserBolt;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -43,5 +39,10 @@ public class PlayerController : MonoBehaviour
             //Create laserBolt at the blaster transform position maintaining the object's rotation.
             Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
         }
+    }
+    // Delete any object with a trigger that hits the player
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject); 
     }
 }
