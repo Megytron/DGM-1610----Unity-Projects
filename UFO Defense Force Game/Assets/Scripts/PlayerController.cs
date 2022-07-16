@@ -11,12 +11,22 @@ public class PlayerController : MonoBehaviour
 
     public Transform blaster;
     public GameObject laserBolt;
-    
+
+    public int powerups;
+
+    private void Start()
+    {
+        powerups = 0;
+    }
     
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("You have: " +powerups+ " PowerUps");
+        }
         // Set HorizontalInput to recieve values from keyboard
         horizontalInput = Input.GetAxis("Horizontal");
         
@@ -41,8 +51,16 @@ public class PlayerController : MonoBehaviour
         }
     }
     // Delete any object with a trigger that hits the player
+    
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject); 
+        Destroy(other.gameObject);
+        
+        if (other.gameObject.tag == "powerup")
+        {
+            powerups++;
+            other.gameObject.SetActive(false);
+        }
     }
+    
 }
