@@ -13,15 +13,17 @@ public class DestroyOutOfBounds : MonoBehaviour
         Time.timeScale = 1;
     }
 
-        void Update()
-    {
+     void Update()
+     {
         if (transform.position.z > topBounds)
         {
             Destroy(gameObject);
         }
         else if (transform.position.z < lowerBounds)
         {
-            Debug.Log("Game Over!");
+			GameManager manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            manager.isGameOver = true;
+			Debug.Log("Game Over!");
             Destroy(gameObject);
             Time.timeScale = 0;
         }

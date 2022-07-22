@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -8267150364933435791}
   - component: {fileID: -319439314950671731}
   - component: {fileID: -4598594691421044188}
+  - component: {fileID: -5981214562941472698}
   m_Layer: 0
   m_Name: UFO_Scout
   m_TagString: Untagged
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214fdefcb6d5c4ebdbc74155f316abf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 20
 --- !u!114 &-8267150364933435791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d599016f932a446d5b261f4846e3007e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
+  scoreToGive: 0
+--- !u!114 &-5981214562941472698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145837791281615799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b161f5dcf171945c8a687d6e92f60d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 0.09307594, g: 0.6132076, b: 0, a: 1}
+  endColor: {r: 0.8749158, g: 1, b: 0.7877358, a: 1}
+  speed: 5

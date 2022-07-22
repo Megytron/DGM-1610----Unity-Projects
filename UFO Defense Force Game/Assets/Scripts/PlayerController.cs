@@ -12,21 +12,17 @@ public class PlayerController : MonoBehaviour
     public Transform blaster;
     public GameObject laserBolt;
 
-    public int powerups;
+    public GameManager gameManager;
 
-    private void Start()
+    void Start()
     {
-        powerups = 0;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); // Reference GameManager script on GameManager object
     }
-    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Debug.Log("You have: " +powerups+ " PowerUps");
-        }
+        
         // Set HorizontalInput to recieve values from keyboard
         horizontalInput = Input.GetAxis("Horizontal");
         
@@ -44,7 +40,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
         // If space bar is pressed, fire laserBolt
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && gameManager.isGameOver == false) // *Second condition gameManager.isGameOver prevents the player from shooting after isGameOver becomes true
         {
             //Create laserBolt at the blaster transform position maintaining the object's rotation.
             Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
@@ -56,11 +52,6 @@ public class PlayerController : MonoBehaviour
     {
         Destroy(other.gameObject);
         
-        if (other.gameObject.tag == "powerup")
-        {
-            powerups++;
-            other.gameObject.SetActive(false);
-        }
     }
     
 }
